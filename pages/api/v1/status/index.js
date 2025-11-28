@@ -1,5 +1,9 @@
-export default function status(request, response) {
-  //response é o objeto e 'status' é um metodo dele
+import database from "../../../../infra/database.js";
+
+async function status(request, response) {
+  const result = await database.query("SELECT 1 + 1 as sum;");
+  console.log(result.rows);
   response.status(200).json({ status: "OK no teste da api status ã ã óó" });
-  // response.status(200).send("OK no teste da api status ã ã óó");
 }
+
+export default status;
