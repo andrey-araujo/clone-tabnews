@@ -14,6 +14,7 @@ async function status(request, response) {
 
   const databaseName = process.env.POSTGRES_DB;
   const databaseOpenedConnectionsResult = await database.query({
+    //parameterized query to avoid SQL injection
     text: `SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;`,
     values: [databaseName],
   });

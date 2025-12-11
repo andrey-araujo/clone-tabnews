@@ -10,6 +10,7 @@ async function query(queryObject) {
   });
   await client.connect();
 
+  // try/catch/finally to handle errors and open/close the connection
   try {
     const result = await client.query(queryObject);
     return result;
